@@ -7,9 +7,9 @@ let sliderY;
 let introMode = true;
 let textBoxIndex = 0;
 let textBoxes = [
-  "Text box 1",
-  "Text box 2",
-  "Text box 3",
+  "Wow, it seems I went too far down. I need to get back up!",
+  "Use the slider on the left to control my ascent speed!",
+  "Be careful though, if I go up too fast, I might get the bends! Lets start at 60 ft/min until I reach 60 ft."
   // Add more text boxes as needed
 ];
 
