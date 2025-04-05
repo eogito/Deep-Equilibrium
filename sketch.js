@@ -10,8 +10,14 @@ let sixtyFootPauseTriggered = false;
 let textBoxIndex = 0;
 let textBoxes = [
   "Wow, it seems I went too far down. I need to get back up!",
+  "Right now, at a depth of 120 ft or 36.576 meters, the water exerts around 3.6 atm of pressure on me!",
+  "This is because pressure P = ρgh, where ρ is the density of water, g is the acceleration due to gravity, and h is the depth.",
+  "In this case, ρ = 1000 kg/m^3, g = 9.81 m/s^2, and h = 36.576 m.",
+  "So P = 1000 * 9.81 * 36.576 = 358,810 Pa, or about 3.6 atm.",
+  "Adding the 1 atm of pressure from the atmosphere at sea level (h=0), I am under a total of 4.6 atm of pressure!",
   "Use the slider on the left to control my ascent speed!",
-  "Be careful though, if I go up too fast, I might get the bends! Lets start at 60 ft/min until I reach 60 ft."
+  "Be careful though, if I go up too fast, I might get the bends!",
+  "Lets start at 60 ft/min until I reach 60 ft."
   // Add more text boxes as needed
 ];
 
@@ -50,9 +56,18 @@ function draw() {
     introMode = true;
     textBoxIndex = 0;
     textBoxes = [
-      "I've reached 60ft! Time to slow down and avoid the bends.",
-      "I'll need to make a few more stops to safely reach the surface.",
-      "Let's take a deep breath and continue the ascent."
+      "I've reached 60ft!",
+      "Here, at 60 ft, or 18 meters, I am at around 2.8 atm of pressure!",
+      "I should slow down to prevent getting the bends.",
+      "The bends, or decompression sickness, is caused by the formation of nitrogen bubbles in the blood and tissues!",
+      "This can be attributed to Le Chatelier's principle, which states that a system at equilibrium will shift to counteract any stresses applied.", 
+      "In this case, the system is a solubility equilibrium (the amount of nitrogen dissolved in my blood compared to the amount as a gas), and the stress is the decrease in pressure as I ascend.",
+      "In short, the equilibrium is N2(aq) <-> N2(g), and the decrease in pressure causes the equilibrium to shift to the left towards the side with more moles of gas to increase the pressure, causing nitrogen to come out of solution and form bubbles.", 
+      "Another neat way to explain this is through Henry's Law, which states that S = kP, where S is the solubility of a gas in a liquid, k is a constant, and P is the partial pressure of the gas!", 
+      "Essentially, as I ascend, the total pressure I am under (and subsequently the partial pressure of nitrogen, since the total pressure is the sum of partial pressures) decreases.",
+      "This then decreases the solubility of nitrogen in my blood, causing dissolved nitrogen to come out and form bubbles in my tissues.",
+      "Ouch!", 
+      "Let's go at 30 ft/min until I reach 30 ft."
     ];
     sixtyFootPauseTriggered = true;
   }
