@@ -9,7 +9,7 @@ let nitrogenLevel = 0;
 let maxNitrogenLevel = 100;
 let dangerThreshold = 80;
 let gameOver = false;
-let gameWin = true;
+let gameWin = false;
 
 let introMode = true;
 let sixtyFootPauseTriggered = false;
@@ -343,12 +343,9 @@ function mousePressed() {
       thirtyFootPauseTriggered = false;
       xSlider.value(0);
       xSlider.elt.disabled = false;
-<<<<<<< HEAD
-=======
       targetSpeed = 60; // Reset speed
       
       // Reset to original text boxes
->>>>>>> 1c169a8881e8f7874b8d0d0ca29d544fa3fd9ab0
       textBoxes = [
         "Wow, it seems I went too far down. I need to get back up!",
         "Right now, at a depth of 120 ft or 36.576 meters, the water exerts around 3.5 atm of pressure on me!",
