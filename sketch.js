@@ -44,23 +44,14 @@ function setup() {
 function draw() {
   let canvasPosition = canvas.position();
   xSlider.position(canvasPosition.x, canvasPosition.y + height / 2);
-  background(0); // Start with black background
-  
-  // Define the total gradient range (0 to 1000 units)
+  background(0);
   let totalGradientHeight = 1000;
-  
-  // Calculate the visible portion of the gradient based on sliderY
-  let visibleTop = sliderY / 6; // Adjust this divisor to control scrolling speed
+  let visibleTop = sliderY / 6;
   let visibleBottom = visibleTop + height;
-  
-  // Draw the gradient lines
   for (let y = 0; y < height; y++) {
-    // Map the screen y-coordinate to the position in the total gradient
     let gradientY = map(y, 0, height, visibleTop, visibleBottom);
-    
-    // Calculate color based on position in the total gradient (0-1000)
     let inter = map(gradientY, 0, totalGradientHeight, 1, 0);
-    inter = constrain(inter, 0, 1); // Ensure value stays between 0 and 1
+    inter = constrain(inter, 0, 1);
     
     let c = lerpColor(color(0, 0, 40), color(0, 100, 255), inter);
     stroke(c);
