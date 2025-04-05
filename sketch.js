@@ -167,6 +167,7 @@ function draw() {
     textBoxIndex = 0;
     textBoxes = [
       "I've reached 60ft!",
+      "I'm just going to take a safety stop here for 1 minute to let my nitrogen levels lower.", 
       "Here, at 60 ft, or 18.3 meters, I am at around 2.8 atm of pressure!",
       "I should probably explain why I'm so worried about getting the bends.",
       "In short, the oxygen in my air tank is the same as good old regular air, 21% oxygen and 79% nitrogen.", 
@@ -180,7 +181,8 @@ function draw() {
       "This can be attributed to Le Chatelier's principle, which states that a system at equilibrium will shift to counteract any stresses applied.", 
       "In this case, the system is a solubility equilibrium (the amount of nitrogen dissolved in my blood compared to the amount as a gas), and the stress is the decrease in pressure as I ascend.",
       "In short, the equilibrium is N2(aq) <-> N2(g), and the decrease in pressure causes the equilibrium to shift to the left towards the side with more moles of gas to increase the pressure, causing nitrogen to come out of solution and form bubbles.", 
-      "Not fun!", 
+      "Not fun!",
+      "Alright, my safety stop is over!", 
       "Let's slow down and go at 30 ft/min until I reach 30 ft."
     ];
     sixtyFootPauseTriggered = true;
@@ -193,6 +195,7 @@ function draw() {
     textBoxIndex = 0;
     textBoxes = [
       "I've reached 30ft!",
+      "I'm going to take another safety stop here for a minute",
       "Here, at 30 ft, or 9 meters, I am at around 1.9 atm of pressure!",
       "You might be wondering why I am slowing down as I go up.", 
       "This can be explained neatly through Henry's Law, which states that S = kP, where S is the solubility of a gas in a liquid, k is a constant, and P is the partial pressure of the gas!", 
@@ -204,6 +207,7 @@ function draw() {
       "That means that around the same amount of nitrogen in my blood was released during both of these ascents, despite the first being 60 ft and the second being 30 ft!",
       "Proportionally, the amount of nitrogen dissolving out of my blood compared to the amount of distance I ascend is only going to go up from here as we get closer to the surface!", 
       "That is why I need to slow down even more as I ascend!",
+      "My stop here seems to be over, so I can go up again!", 
       "Let's slow down and go at 15 ft/min until I reach 15 ft."
     ];
     thirtyFootPauseTriggered = true;
@@ -211,14 +215,17 @@ function draw() {
   if (sliderY <= 3*height/4-42.5 && !fifteenFootPauseTriggered) {
     prevNitrogen = nitrogenLevel;
     // Trigger another pause and text boxes
+    targetSpeed = 3;
     introMode = true;
     textBoxIndex = 0;
     textBoxes = [
       "I've reached 15 ft!",
+      "I'm going to take another safety stop here for 3 minutes, just to really make sure my nitrogen levels are low enough.",
       "Here, at 15 ft, or 4.6 meters, I am at around 1.4 atm of pressure!",
       "You might be wondering why I'm so worried about nitrogen bubbling out, even though there's oxygen in my blood too!",
       "This is because unlike nitrogen, oxygen is constantly being used up by my body for cellular respiration.",
-      "As a result, it doesn't accumulate in my tissues like nitrogen does."
+      "As a result, it doesn't accumulate in my tissues like nitrogen does.", 
+      "Alright, seems like my stop is over, lets go up at 3 ft/min until I reach the surface!",
     ];
     fifteenFootPauseTriggered = true;
   }
