@@ -10,7 +10,7 @@ let maxNitrogenLevel = 100;
 let dangerThreshold = 80;
 let gameOver = false;
 let gameWin = false;
-let prevNitrogen;
+let prevNitrogen = 0;
 
 let introMode = true;
 let sixtyFootPauseTriggered = false;
@@ -105,7 +105,7 @@ function draw() {
   speed = xSlider.value()/20;
 
   if (speed > 0) {
-    nitrogenLevel += abs(20*speed-targetSpeed) * 0.025; // Increase nitrogen level based on speed
+    nitrogenLevel += abs(20*speed-targetSpeed) * 0.01; // Increase nitrogen level based on speed
   } else {
     nitrogenLevel = max(0, nitrogenLevel - 0.3);
   }
@@ -160,8 +160,7 @@ function draw() {
     console.log("failing!!")
   }
   if (sliderY <= 3*height-170 && !sixtyFootPauseTriggered) {
-    if (!sixtyFootPauseTriggered) prevNitrogen = nitrogenLevel;
-    nitrogenLevel = prevNitrogen;
+    prevNitrogen = nitrogenLevel;
     // Trigger another pause and text boxes
     targetSpeed = 30;
     introMode = true;
@@ -187,8 +186,7 @@ function draw() {
     sixtyFootPauseTriggered = true;
   }
   if (sliderY <= 3*height/2-85 && !thirtyFootPauseTriggered) {
-    if (!thirtyFootPauseTriggered) prevNitrogen = nitrogenLevel;
-    nitrogenLevel = prevNitrogen;
+    prevNitrogen = nitrogenLevel;
     // Trigger another pause and text boxes
     targetSpeed = 15;
     introMode = true;
@@ -211,8 +209,7 @@ function draw() {
     thirtyFootPauseTriggered = true;
   }
   if (sliderY <= 3*height/4-42.5 && !fifteenFootPauseTriggered) {
-    if (!fifteenFootPauseTriggered) prevNitrogen = nitrogenLevel;
-    nitrogenLevel = prevNitrogen;
+    prevNitrogen = nitrogenLevel;
     // Trigger another pause and text boxes
     introMode = true;
     textBoxIndex = 0;
@@ -226,6 +223,7 @@ function draw() {
     fifteenFootPauseTriggered = true;
   }
   if (introMode) {
+    nitrogenLevel = prevNitrogen; // Reset nitrogen level to previous value
     xSlider.elt.disabled = true;
     speed = 0; // Stop the player from moving during intro mode
     // Draw the text box
@@ -349,6 +347,7 @@ function mousePressed() {
       xSlider.value(0);
       xSlider.elt.disabled = false;
       targetSpeed = 60; // Reset speed
+      prevNitrogen = 0; // Reset nitrogen level
       
       // Reset to original text boxes
       textBoxes = [
