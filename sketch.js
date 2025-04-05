@@ -181,7 +181,7 @@ function draw() {
       "That is why I need to slow down even more as I ascend!",
       "Let's slow down and go at 15 ft/min until I reach  15 ft."
     ];
-    sixtyFootPauseTriggered = true;
+    thirtyFootPauseTriggered = true;
   }
   if (introMode) {
     xSlider.elt.disabled = true;
