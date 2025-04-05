@@ -21,7 +21,8 @@ let textBoxes = [
   "Adding the 1 atm of pressure from the atmosphere at sea level (h=0), I am under a total of 4.5 atm of pressure!",
   "Use the slider on the left to control my ascent speed!",
   "Be careful though, if I go up too fast, I might get the bends!",
-  "Lets start at 60 ft/min until I reach 60 ft."
+  "Lets start at 60 ft/min until I reach 60 ft.",
+  "Beware of my nitrogen levels. Make sure it doesn't go too high!"
   // Add more text boxes as needed
 ];
 
@@ -93,7 +94,7 @@ function draw() {
   speed = xSlider.value()/20;
 
   if (speed > 0) {
-    nitrogenLevel += speed * 0.2; 
+    nitrogenLevel += speed * 0.05; 
   } else {
     nitrogenLevel = max(0, nitrogenLevel - 0.3);
   }
@@ -163,6 +164,7 @@ function draw() {
       "Let's slow down and go at 30 ft/min until I reach 30 ft."
     ];
     sixtyFootPauseTriggered = true;
+    nitrogenLevel = 0;
   }
   if (sliderY <= 3*height/2-85 && !thirtyFootPauseTriggered) {
     // Trigger another pause and text boxes
@@ -184,6 +186,8 @@ function draw() {
     thirtyFootPauseTriggered = true;
   }
   if (introMode) {
+    
+    nitrogenLevel = 0;
     xSlider.elt.disabled = true;
     speed = 0; // Stop the player from moving during intro mode
     // Draw the text box
