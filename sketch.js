@@ -8,7 +8,7 @@ let nitrogenLevel = 0;
 let maxNitrogenLevel = 100;
 let dangerThreshold = 80;
 let gameOver = false;
-let gameWin = false;
+let gameWin = true;
 
 let introMode = true;
 let sixtyFootPauseTriggered = false;
@@ -248,26 +248,19 @@ function draw() {
   if (gameWin) {
     speed = 0;
     xSlider.value(0);
-    // Disable slider during game over
     xSlider.elt.disabled = true;
     
-    // Draw semi-transparent overlay
     fill(0, 0, 0, 200);
     rect(0, 0, width, height);
-    
-    // Draw game over text
     fill(0, 255, 0);
     textSize(72);
     textAlign(CENTER, CENTER);
     text("YOU WIN", width/2, height/2 - 100);
     
-    // Explanation text
     fill(255);
     textSize(36);
     text("You have successfully reached the top without", width/2, height/2);
     text("getting the bends", width/2, height/2 + 50);
-    
-    // Draw restart button
     fill(0, 200, 0);
     rect(width/2 - 100, height/2 + 150, 200, 60, 10);
     fill(255);
@@ -277,26 +270,19 @@ function draw() {
   if (gameOver) {
     speed = 0;
     xSlider.value(0);
-    // Disable slider during game over
     xSlider.elt.disabled = true;
     
-    // Draw semi-transparent overlay
     fill(0, 0, 0, 200);
     rect(0, 0, width, height);
-    
-    // Draw game over text
     fill(255, 0, 0);
     textSize(72);
     textAlign(CENTER, CENTER);
     text("GAME OVER", width/2, height/2 - 100);
     
-    // Explanation text
     fill(255);
     textSize(36);
     text("Decompression sickness (the bends) has occurred", width/2, height/2);
     text("Nitrogen bubbles have formed in your bloodstream", width/2, height/2 + 50);
-    
-    // Draw restart button
     fill(0, 200, 0);
     rect(width/2 - 100, height/2 + 150, 200, 60, 10);
     fill(255);
@@ -312,22 +298,25 @@ function mousePressed() {
       introMode = false;
     }
   }
-  if (gameOver) {
-    // Check if mouse is over the restart button
+  if (gameWin) {
     if (mouseX > width/2 - 100 && mouseX < width/2 + 100 &&
         mouseY > height/2 + 150 && mouseY < height/2 + 210) {
-      // Reset all game variables
+      window.location.href = "info.html";
+    }
+    return;
+  }
+  if (gameOver) {
+    if (mouseX > width/2 - 100 && mouseX < width/2 + 100 &&
+        mouseY > height/2 + 150 && mouseY < height/2 + 210) {
       nitrogenLevel = 0;
-      sliderY = 6*height; // Reset depth
+      sliderY = 6*height;
       gameOver = false;
       introMode = true;
       textBoxIndex = 0;
       sixtyFootPauseTriggered = false;
       thirtyFootPauseTriggered = false;
-      xSlider.value(0); // Reset slider
+      xSlider.value(0);
       xSlider.elt.disabled = false;
-      
-      // Reset to original text boxes
       textBoxes = [
         "Wow, it seems I went too far down. I need to get back up!",
         "Right now, at a depth of 120 ft or 36.576 meters, the water exerts around 3.5 atm of pressure on me!",
@@ -344,7 +333,6 @@ function mousePressed() {
     return;
   }
   
-  // Keep your existing mousePressed functionality for introMode
   if (introMode) {
     textBoxIndex++;
     if (textBoxIndex >= textBoxes.length) {
