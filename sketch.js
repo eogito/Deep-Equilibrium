@@ -7,11 +7,14 @@ let speed;
 let nitrogenLevel = 0;
 let maxNitrogenLevel = 100;
 let dangerThreshold = 80;
+let gameOver = false
 
 let introMode = true;
 let sixtyFootPauseTriggered = false;
 let thirtyFootPauseTriggered = false;
 let textBoxIndex = 0;
+
+nitrogenLevel = 0;
 let textBoxes = [
   "Wow, it seems I went too far down. I need to get back up!",
   "Right now, at a depth of 120 ft or 36.576 meters, the water exerts around 3.5 atm of pressure on me!",
@@ -137,14 +140,17 @@ function draw() {
     fill(255, 0, 0);
     textSize(24);
     textAlign(CENTER, CENTER);
-    text("WARNING: Nitrogen level too high!\nRisk of decompression sickness!", width/2, 100);
+    text("WARNING: Nitrogen level too high!\nRisk of bends!", width/2, 100);
     
     if (nitrogenLevel > dangerThreshold + 10) {
       fill(255, 0, 0, map(nitrogenLevel, dangerThreshold, maxNitrogenLevel, 0, 100));
       rect(0, 0, width, height);
     }
   }
-  console.log("amongus")
+  if (nitrogenLevel >= 99) {
+    gameOver = true;
+  }
+  console.log("failing!!")
   if (sliderY <= 3*height-170 && !sixtyFootPauseTriggered) {
     // Trigger another pause and text boxes
     introMode = true;
@@ -230,9 +236,80 @@ function draw() {
   textSize(16);
   text("speed (ft/min): " + xSlider.value(), 160, 300);
   text("sliderY: " + sliderY, 160, 330);
+  if (nitrogenLevel >= maxNitrogenLevel) {
+    gameOver = true;
+  }
+  if (gameOver) {
+    speed = 0;
+  xSlider.value(0);
+    // Disable slider during game over
+    xSlider.elt.disabled = true;
+    
+    // Draw semi-transparent overlay
+    fill(0, 0, 0, 200);
+    rect(0, 0, width, height);
+    
+    // Draw game over text
+    fill(255, 0, 0);
+    textSize(72);
+    textAlign(CENTER, CENTER);
+    text("GAME OVER", width/2, height/2 - 100);
+    
+    // Explanation text
+    fill(255);
+    textSize(36);
+    text("Decompression sickness (the bends) has occurred", width/2, height/2);
+    text("Nitrogen bubbles have formed in your bloodstream", width/2, height/2 + 50);
+    
+    // Draw restart button
+    fill(0, 200, 0);
+    rect(width/2 - 100, height/2 + 150, 200, 60, 10);
+    fill(255);
+    textSize(24);
+    text("RESTART", width/2, height/2 + 180);
+  }
 }
 
 function mousePressed() {
+  if (introMode) {
+    textBoxIndex++;
+    if (textBoxIndex >= textBoxes.length) {
+      introMode = false;
+    }
+  }
+  if (gameOver) {
+    // Check if mouse is over the restart button
+    if (mouseX > width/2 - 100 && mouseX < width/2 + 100 &&
+        mouseY > height/2 + 150 && mouseY < height/2 + 210) {
+      // Reset all game variables
+      nitrogenLevel = 0;
+      sliderY = 6*height; // Reset depth
+      gameOver = false;
+      introMode = true;
+      textBoxIndex = 0;
+      sixtyFootPauseTriggered = false;
+      thirtyFootPauseTriggered = false;
+      xSlider.value(0); // Reset slider
+      xSlider.elt.disabled = false;
+      
+      // Reset to original text boxes
+      textBoxes = [
+        "Wow, it seems I went too far down. I need to get back up!",
+        "Right now, at a depth of 120 ft or 36.576 meters, the water exerts around 3.5 atm of pressure on me!",
+        "This is because pressure P = ρgh, where ρ is the density of water, g is the acceleration due to gravity, and h is the depth.",
+        "In this case, ρ = 1000 kg/m^3, g = 9.81 m/s^2, and h = 36.576 m.",
+        "So P = 1000 * 9.81 * 36.576 = 358,810 Pa, or about 3.5 atm.",
+        "Adding the 1 atm of pressure from the atmosphere at sea level (h=0), I am under a total of 4.5 atm of pressure!",
+        "Use the slider on the left to control my ascent speed!",
+        "Be careful though, if I go up too fast, I might get the bends!",
+        "Lets start at 60 ft/min until I reach 60 ft.",
+        "Beware of my nitrogen levels. Make sure it doesn't go too high!"
+      ];
+    }
+    return;
+  }
+  
+  // Keep your existing mousePressed functionality for introMode
   if (introMode) {
     textBoxIndex++;
     if (textBoxIndex >= textBoxes.length) {
