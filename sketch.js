@@ -10,6 +10,7 @@ let maxNitrogenLevel = 100;
 let dangerThreshold = 80;
 let gameOver = false;
 let gameWin = false;
+let prevNitrogen;
 
 let introMode = true;
 let sixtyFootPauseTriggered = false;
@@ -31,7 +32,8 @@ let textBoxes = [
   "The bends, or decompression sickness, is caused by the formation of nitrogen bubbles in the blood and tissues!",
   "Ouch!",
   "Lets start at 60 ft/min until I reach 60 ft.",
-  "Beware of my nitrogen levels. Make sure it doesn't go too high!"
+  "Beware of my nitrogen levels. Make sure it doesn't go too high!", 
+  "If I go up too fast, the nitrogen in my blood will come out of solution and form bubbles, but if I go too slow, my body, which isn't immediately in equilibrium with the surrounding environment, will have more time to absorb nitrogen!"
   // Add more text boxes as needed
 ];
 
@@ -42,7 +44,7 @@ function preload() {
 function setup() {
   canvas = createCanvas(1920, 910);
   canvas.parent('canvas-container');
-  xSlider = createSlider(0, 60, 0);
+  xSlider = createSlider(0, 120, 0);
   xSlider.style('transform', 'rotate(-90deg)');
   xSlider.style('width', '200px');
   xSlider.style('background', '#ddd');
@@ -103,7 +105,7 @@ function draw() {
   speed = xSlider.value()/20;
 
   if (speed > 0) {
-    nitrogenLevel += speed * 0.05; 
+    nitrogenLevel += abs(20*speed-targetSpeed) * 0.025; // Increase nitrogen level based on speed
   } else {
     nitrogenLevel = max(0, nitrogenLevel - 0.3);
   }
@@ -158,6 +160,8 @@ function draw() {
     console.log("failing!!")
   }
   if (sliderY <= 3*height-170 && !sixtyFootPauseTriggered) {
+    if (!sixtyFootPauseTriggered) prevNitrogen = nitrogenLevel;
+    nitrogenLevel = prevNitrogen;
     // Trigger another pause and text boxes
     targetSpeed = 30;
     introMode = true;
@@ -181,9 +185,10 @@ function draw() {
       "Let's slow down and go at 30 ft/min until I reach 30 ft."
     ];
     sixtyFootPauseTriggered = true;
-    nitrogenLevel = 0;
   }
   if (sliderY <= 3*height/2-85 && !thirtyFootPauseTriggered) {
+    if (!thirtyFootPauseTriggered) prevNitrogen = nitrogenLevel;
+    nitrogenLevel = prevNitrogen;
     // Trigger another pause and text boxes
     targetSpeed = 15;
     introMode = true;
@@ -206,6 +211,8 @@ function draw() {
     thirtyFootPauseTriggered = true;
   }
   if (sliderY <= 3*height/4-42.5 && !fifteenFootPauseTriggered) {
+    if (!fifteenFootPauseTriggered) prevNitrogen = nitrogenLevel;
+    nitrogenLevel = prevNitrogen;
     // Trigger another pause and text boxes
     introMode = true;
     textBoxIndex = 0;
@@ -219,8 +226,6 @@ function draw() {
     fifteenFootPauseTriggered = true;
   }
   if (introMode) {
-    
-    nitrogenLevel = 0;
     xSlider.elt.disabled = true;
     speed = 0; // Stop the player from moving during intro mode
     // Draw the text box
