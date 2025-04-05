@@ -4,6 +4,7 @@ let playerX;
 let playerY;
 let sliderY;
 let speed;
+let targetSpeed = 60;
 let nitrogenLevel = 0;
 let maxNitrogenLevel = 100;
 let dangerThreshold = 80;
@@ -13,6 +14,7 @@ let gameWin = true;
 let introMode = true;
 let sixtyFootPauseTriggered = false;
 let thirtyFootPauseTriggered = false;
+let fifteenFootPauseTriggered = false;
 let textBoxIndex = 0;
 
 nitrogenLevel = 0;
@@ -23,8 +25,11 @@ let textBoxes = [
   "In this case, ρ = 1000 kg/m^3, g = 9.81 m/s^2, and h = 36.576 m.",
   "So P = 1000 * 9.81 * 36.576 = 358,810 Pa, or about 3.5 atm.",
   "Adding the 1 atm of pressure from the atmosphere at sea level (h=0), I am under a total of 4.5 atm of pressure!",
+  "Wow! That's a lot of pressure!",
   "Use the slider on the left to control my ascent speed!",
   "Be careful though, if I go up too fast, I might get the bends!",
+  "The bends, or decompression sickness, is caused by the formation of nitrogen bubbles in the blood and tissues!",
+  "Ouch!",
   "Lets start at 60 ft/min until I reach 60 ft.",
   "Beware of my nitrogen levels. Make sure it doesn't go too high!"
   // Add more text boxes as needed
@@ -150,24 +155,29 @@ function draw() {
   }
   if (nitrogenLevel >= 99) {
     gameOver = true;
+    console.log("failing!!")
   }
-  console.log("failing!!")
   if (sliderY <= 3*height-170 && !sixtyFootPauseTriggered) {
     // Trigger another pause and text boxes
+    targetSpeed = 30;
     introMode = true;
     textBoxIndex = 0;
     textBoxes = [
       "I've reached 60ft!",
       "Here, at 60 ft, or 18.3 meters, I am at around 2.8 atm of pressure!",
-      "I should slow down to prevent getting the bends.",
-      "The bends, or decompression sickness, is caused by the formation of nitrogen bubbles in the blood and tissues!",
+      "I should probably explain why I'm so worried about getting the bends.",
+      "In short, the oxygen in my air tank is the same as good old regular air, 21% oxygen and 79% nitrogen.", 
+      "However, as I descended, the total pressure increased.", 
+      "The total pressure is the sum of partial pressures, and since the air is 79% nitrogen, the partial pressure of nitrogen in my blood at sea level (1 atm) is 0.79 atm.",
+      "However, here, at 2.8 atm, the air is still 79% nitrogen, so the partial pressure of nitrogen is 2.8 * 0.79 = 2.21 atm!",
+      "From the ideal gas law, PV = nRT, we can see that n/V = P/(RT).",  
+      "Since the volume of my body stays the same, and assuming the temperature stays constant, the concentration of dissolved nitrogen in my blood almost tripled!",
+      "However, as I ascend, the pressure decreases, and the nitrogen will come out of my blood as well.",
+      "If too much comes out too quickly, bubbles can form!",  
       "This can be attributed to Le Chatelier's principle, which states that a system at equilibrium will shift to counteract any stresses applied.", 
       "In this case, the system is a solubility equilibrium (the amount of nitrogen dissolved in my blood compared to the amount as a gas), and the stress is the decrease in pressure as I ascend.",
       "In short, the equilibrium is N2(aq) <-> N2(g), and the decrease in pressure causes the equilibrium to shift to the left towards the side with more moles of gas to increase the pressure, causing nitrogen to come out of solution and form bubbles.", 
-      "Another neat way to explain this is through Henry's Law, which states that S = kP, where S is the solubility of a gas in a liquid, k is a constant, and P is the partial pressure of the gas!", 
-      "Essentially, as I ascend, the total pressure I am under (and subsequently the partial pressure of nitrogen, since the total pressure is the sum of partial pressures) decreases.",
-      "This then decreases the solubility of nitrogen in my blood, causing dissolved nitrogen to come out and form bubbles in my tissues.",
-      "Ouch!", 
+      "Not fun!", 
       "Let's slow down and go at 30 ft/min until I reach 30 ft."
     ];
     sixtyFootPauseTriggered = true;
@@ -175,22 +185,38 @@ function draw() {
   }
   if (sliderY <= 3*height/2-85 && !thirtyFootPauseTriggered) {
     // Trigger another pause and text boxes
+    targetSpeed = 15;
     introMode = true;
     textBoxIndex = 0;
     textBoxes = [
       "I've reached 30ft!",
       "Here, at 30 ft, or 9 meters, I am at around 1.9 atm of pressure!",
       "You might be wondering why I am slowing down as I go up.", 
-      "This can also be attributed to Henry's Law!", 
+      "This can be explained neatly through Henry's Law, which states that S = kP, where S is the solubility of a gas in a liquid, k is a constant, and P is the partial pressure of the gas!", 
+      "Essentially, as I ascend, the total pressure I am under (and subsequently the partial pressure of nitrogen, since the total pressure is the sum of partial pressures) decreases.",
+      "This then decreases the solubility of nitrogen in my blood, causing dissolved nitrogen to come out and form bubbles in my tissues.",
       "Since S = kP, the solubility of nitrogen in my blood is directly proportional to the partial pressure of nitrogen.",
-      "This means that as I ascended from 120 ft (4.5 atm) to 60 ft (2.8 atm), the pressure and the solubility of nitrogen in my blood decreased by 38%.",
-      "Then, as I ascended from 60 ft (2.8 atm) to 30 ft (1.9 atm), the pressure and solubility of nitrogen in my blood decreased by 32%.", 
-      "That means that around the same amount of nitrogen in my blood dissolved out during both of these ascents, despite the first being 60 ft and the second being 30 ft!",
+      "This means that as I ascended from 120 ft (4.5 atm) to 60 ft (2.8 atm), the partial pressure and the solubility of nitrogen in my blood decreased by 38%.",
+      "Then, as I ascended from 60 ft (2.8 atm) to 30 ft (1.9 atm), the partial pressure and solubility of nitrogen in my blood decreased by 32%.", 
+      "That means that around the same amount of nitrogen in my blood was released during both of these ascents, despite the first being 60 ft and the second being 30 ft!",
       "Proportionally, the amount of nitrogen dissolving out of my blood compared to the amount of distance I ascend is only going to go up from here as we get closer to the surface!", 
       "That is why I need to slow down even more as I ascend!",
-      "Let's slow down and go at 15 ft/min until I reach  15 ft."
+      "Let's slow down and go at 15 ft/min until I reach 15 ft."
     ];
     thirtyFootPauseTriggered = true;
+  }
+  if (sliderY <= 3*height/4-42.5 && !fifteenFootPauseTriggered) {
+    // Trigger another pause and text boxes
+    introMode = true;
+    textBoxIndex = 0;
+    textBoxes = [
+      "I've reached 15 ft!",
+      "Here, at 15 ft, or 4.6 meters, I am at around 1.4 atm of pressure!",
+      "You might be wondering why I'm so worried about nitrogen bubbling out, even though there's oxygen in my blood too!",
+      "This is because unlike nitrogen, oxygen is constantly being used up by my body for cellular respiration.",
+      "As a result, it doesn't accumulate in my tissues like nitrogen does."
+    ];
+    fifteenFootPauseTriggered = true;
   }
   if (introMode) {
     
@@ -317,6 +343,12 @@ function mousePressed() {
       thirtyFootPauseTriggered = false;
       xSlider.value(0);
       xSlider.elt.disabled = false;
+<<<<<<< HEAD
+=======
+      targetSpeed = 60; // Reset speed
+      
+      // Reset to original text boxes
+>>>>>>> 1c169a8881e8f7874b8d0d0ca29d544fa3fd9ab0
       textBoxes = [
         "Wow, it seems I went too far down. I need to get back up!",
         "Right now, at a depth of 120 ft or 36.576 meters, the water exerts around 3.5 atm of pressure on me!",
