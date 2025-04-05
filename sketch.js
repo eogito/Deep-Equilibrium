@@ -7,14 +7,15 @@ let speed;
 
 let introMode = true;
 let sixtyFootPauseTriggered = false;
+let thirtyFootPauseTriggered = false;
 let textBoxIndex = 0;
 let textBoxes = [
   "Wow, it seems I went too far down. I need to get back up!",
-  "Right now, at a depth of 120 ft or 36.576 meters, the water exerts around 3.6 atm of pressure on me!",
+  "Right now, at a depth of 120 ft or 36.576 meters, the water exerts around 3.5 atm of pressure on me!",
   "This is because pressure P = ρgh, where ρ is the density of water, g is the acceleration due to gravity, and h is the depth.",
   "In this case, ρ = 1000 kg/m^3, g = 9.81 m/s^2, and h = 36.576 m.",
-  "So P = 1000 * 9.81 * 36.576 = 358,810 Pa, or about 3.6 atm.",
-  "Adding the 1 atm of pressure from the atmosphere at sea level (h=0), I am under a total of 4.6 atm of pressure!",
+  "So P = 1000 * 9.81 * 36.576 = 358,810 Pa, or about 3.5 atm.",
+  "Adding the 1 atm of pressure from the atmosphere at sea level (h=0), I am under a total of 4.5 atm of pressure!",
   "Use the slider on the left to control my ascent speed!",
   "Be careful though, if I go up too fast, I might get the bends!",
   "Lets start at 60 ft/min until I reach 60 ft."
@@ -57,7 +58,7 @@ function draw() {
     textBoxIndex = 0;
     textBoxes = [
       "I've reached 60ft!",
-      "Here, at 60 ft, or 18 meters, I am at around 2.8 atm of pressure!",
+      "Here, at 60 ft, or 18.3 meters, I am at around 2.8 atm of pressure!",
       "I should slow down to prevent getting the bends.",
       "The bends, or decompression sickness, is caused by the formation of nitrogen bubbles in the blood and tissues!",
       "This can be attributed to Le Chatelier's principle, which states that a system at equilibrium will shift to counteract any stresses applied.", 
@@ -67,7 +68,26 @@ function draw() {
       "Essentially, as I ascend, the total pressure I am under (and subsequently the partial pressure of nitrogen, since the total pressure is the sum of partial pressures) decreases.",
       "This then decreases the solubility of nitrogen in my blood, causing dissolved nitrogen to come out and form bubbles in my tissues.",
       "Ouch!", 
-      "Let's go at 30 ft/min until I reach 30 ft."
+      "Let's slow down and go at 30 ft/min until I reach 30 ft."
+    ];
+    sixtyFootPauseTriggered = true;
+  }
+  if (sliderY <= 3*height/2-85 && !thirtyFootPauseTriggered) {
+    // Trigger another pause and text boxes
+    introMode = true;
+    textBoxIndex = 0;
+    textBoxes = [
+      "I've reached 30ft!",
+      "Here, at 30 ft, or 9 meters, I am at around 1.9 atm of pressure!",
+      "You might be wondering why I am slowing down as I go up.", 
+      "This can also be attributed to Henry's Law!", 
+      "Since S = kP, the solubility of nitrogen in my blood is directly proportional to the partial pressure of nitrogen.",
+      "This means that as I ascended from 120 ft (4.5 atm) to 60 ft (2.8 atm), the pressure and the solubility of nitrogen in my blood decreased by 38%.",
+      "Then, as I ascended from 60 ft (2.8 atm) to 30 ft (1.9 atm), the pressure and solubility of nitrogen in my blood decreased by 32%.", 
+      "That means that around the same amount of nitrogen in my blood dissolved out during both of these ascents, despite the first being 60 ft and the second being 30 ft!",
+      "Proportionally, the amount of nitrogen dissolving out of my blood compared to the amount of distance I ascend is only going to go up from here as we get closer to the surface!", 
+      "That is why I need to slow down even more as I ascend!",
+      "Let's slow down and go at 15 ft/min until I reach  15 ft."
     ];
     sixtyFootPauseTriggered = true;
   }
