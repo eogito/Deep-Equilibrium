@@ -7,7 +7,8 @@ let speed;
 let nitrogenLevel = 0;
 let maxNitrogenLevel = 100;
 let dangerThreshold = 80;
-let gameOver = false
+let gameOver = false;
+let gameWin = false;
 
 let introMode = true;
 let sixtyFootPauseTriggered = false;
@@ -231,7 +232,12 @@ function draw() {
   }
   
 
-  if (sliderY > -340) sliderY = max(-340, sliderY - speed);
+  if (sliderY > -340) {
+    sliderY = max(-340, sliderY - speed);
+  }
+  if (sliderY <= -339) {
+    gameWin = true;
+  }
 
   // draw depth meter
   stroke(255);
@@ -262,9 +268,38 @@ function draw() {
   if (nitrogenLevel >= maxNitrogenLevel) {
     gameOver = true;
   }
+  if (gameWin) {
+    speed = 0;
+    xSlider.value(0);
+    // Disable slider during game over
+    xSlider.elt.disabled = true;
+    
+    // Draw semi-transparent overlay
+    fill(0, 0, 0, 200);
+    rect(0, 0, width, height);
+    
+    // Draw game over text
+    fill(0, 255, 0);
+    textSize(72);
+    textAlign(CENTER, CENTER);
+    text("YOU WIN", width/2, height/2 - 100);
+    
+    // Explanation text
+    fill(255);
+    textSize(36);
+    text("You have successfully reached the top without", width/2, height/2);
+    text("getting the bends", width/2, height/2 + 50);
+    
+    // Draw restart button
+    fill(0, 200, 0);
+    rect(width/2 - 100, height/2 + 150, 200, 60, 10);
+    fill(255);
+    textSize(24);
+    text("MORE INFO", width/2, height/2 + 180);
+  }
   if (gameOver) {
     speed = 0;
-  xSlider.value(0);
+    xSlider.value(0);
     // Disable slider during game over
     xSlider.elt.disabled = true;
     
