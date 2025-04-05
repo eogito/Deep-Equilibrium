@@ -4,6 +4,7 @@ let playerX;
 let playerY;
 let sliderY;
 let speed;
+let targetSpeed = 60;
 let nitrogenLevel = 0;
 let maxNitrogenLevel = 100;
 let dangerThreshold = 80;
@@ -154,10 +155,11 @@ function draw() {
   }
   if (nitrogenLevel >= 99) {
     gameOver = true;
+    console.log("failing!!")
   }
-  console.log("failing!!")
   if (sliderY <= 3*height-170 && !sixtyFootPauseTriggered) {
     // Trigger another pause and text boxes
+    targetSpeed = 30;
     introMode = true;
     textBoxIndex = 0;
     textBoxes = [
@@ -183,6 +185,7 @@ function draw() {
   }
   if (sliderY <= 3*height/2-85 && !thirtyFootPauseTriggered) {
     // Trigger another pause and text boxes
+    targetSpeed = 15;
     introMode = true;
     textBoxIndex = 0;
     textBoxes = [
@@ -349,6 +352,7 @@ function mousePressed() {
       thirtyFootPauseTriggered = false;
       xSlider.value(0); // Reset slider
       xSlider.elt.disabled = false;
+      targetSpeed = 60; // Reset speed
       
       // Reset to original text boxes
       textBoxes = [
