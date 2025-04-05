@@ -45,13 +45,50 @@ function setup() {
 function draw() {
   let canvasPosition = canvas.position();
   xSlider.position(canvasPosition.x, canvasPosition.y + height / 2);
+  background(0);
+  let totalGradientHeight = 1000;
+  let visibleTop = sliderY / 6;
+  let visibleBottom = visibleTop + height;
   for (let y = 0; y < height; y++) {
-    let inter = map(y, 0, height, 1, 0);
-    let c = lerpColor(color(0, 0, 0), color(0, 0, 255), inter);
+    let gradientY = map(y, 0, height, visibleTop, visibleBottom);
+    let inter = map(gradientY, 0, totalGradientHeight, 1, 0);
+    inter = constrain(inter, 0, 1);
+    
+    let c = lerpColor(color(0, 0, 40), color(0, 100, 255), inter);
     stroke(c);
     line(0, y, width, y);
   }
+  for (let i = 0; i < 30; i++) {
+    let y = ((i * 40) - (sliderY % 40)) + map(sin(frameCount * 0.01 + i), -1, 1, -5, 5);
+    if (y > 0 && y < height) {
+      stroke(255, 255, 255, 25);
+      strokeWeight(2);
+      // Create a wavy line
+      beginShape();
+      for (let x = 0; x < width; x += 20) {
+        let waveY = y + map(sin(x * 0.01 + frameCount * 0.05), -1, 1, -8, 8);
+        vertex(x, waveY);
+      }
+      endShape();
+    }
+  }
+  
+  // Draw bubbles
+  for (let i = 0; i < 20; i++) {
+    let x = ((i * 100) % width) + 50;
+    let y = (height - (frameCount + i*200) % (height*1.5)) - sliderY/10;
+    if (y > 0 && y < height) {
+      noStroke();
+      fill(255, 255, 255, 80);
+      ellipse(x, y, 10, 10);
+      fill(255, 255, 255, 40);
+      ellipse(x + 200, y + 100, 15, 15);
+      fill(255, 255, 255, 60);
+      ellipse(x + 400, y - 50, 8, 8);
+    }
+  }
   speed = xSlider.value()/20;
+  console.log("amongus")
   if (sliderY <= 3*height-170 && !sixtyFootPauseTriggered) {
     // Trigger another pause and text boxes
     introMode = true;
