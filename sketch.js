@@ -3,8 +3,10 @@ let guyImage;
 let playerX;
 let playerY;
 let sliderY;
+let speed;
 
 let introMode = true;
+let sixtyFootPauseTriggered = false;
 let textBoxIndex = 0;
 let textBoxes = [
   "Wow, it seems I went too far down. I need to get back up!",
@@ -42,9 +44,21 @@ function draw() {
     stroke(c);
     line(0, y, width, y);
   }
-
+  speed = xSlider.value()/20;
+  if (sliderY <= 3*height-170 && !sixtyFootPauseTriggered) {
+    // Trigger another pause and text boxes
+    introMode = true;
+    textBoxIndex = 0;
+    textBoxes = [
+      "I've reached 60ft! Time to slow down and avoid the bends.",
+      "I'll need to make a few more stops to safely reach the surface.",
+      "Let's take a deep breath and continue the ascent."
+    ];
+    sixtyFootPauseTriggered = true;
+  }
   if (introMode) {
     xSlider.elt.disabled = true;
+    speed = 0; // Stop the player from moving during intro mode
     // Draw the text box
     fill(255);
     textSize(24);
@@ -55,8 +69,9 @@ function draw() {
     if (keyIsDown(65)) playerX -= 10; // Move left by 10 pixels
     if (keyIsDown(68)) playerX += 10; // Move right by 10 pixels
   }
+  
 
-  if (sliderY > -340) sliderY = max(-340, sliderY - xSlider.value()/20);
+  if (sliderY > -340) sliderY = max(-340, sliderY - speed);
 
   // draw depth meter
   stroke(255);
