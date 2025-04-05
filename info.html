@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Equilibrium - More Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to top, #000022, #001166);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #66ccff;
+        }
+        h2 {
+            color: #00ccff;
+            border-bottom: 1px solid #00ccff;
+            padding-bottom: 10px;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        .back-button {
+            display: inline-block;
+            background-color: #00aa44;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #008833;
+        }
+        .formula {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 5px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Science of Diving and Decompression</h1>
+        
+        <h2>Pressure Under Water</h2>
+        <p>
+            When diving, water pressure increases with depth according to the formula:
+        </p>
+        <p class="formula">P = ρgh</p>
+        <p>
+            Where P is pressure, ρ (rho) is the density of water (1000 kg/m³), 
+            g is the acceleration due to gravity (9.81 m/s²), and h is the depth in meters.
+        </p>
+        <p>
+            At sea level, we experience 1 atmosphere (atm) of pressure. Every 10 meters of depth 
+            in water adds approximately 1 additional atmosphere of pressure.
+        </p>
+        
+        <h2>Henry's Law and Nitrogen Absorption</h2>
+        <p>
+            Henry's Law governs how gases dissolve in liquids under pressure:
+        </p>
+        <p class="formula">S = kP</p>
+        <p>
+            Where S is the solubility of a gas in a liquid, k is a constant specific to the gas and liquid, 
+            and P is the partial pressure of the gas.
+        </p>
+        <p>
+            As a diver descends, the increased pressure causes more nitrogen to dissolve in the bloodstream. 
+            When ascending too quickly, this dissolved nitrogen can form bubbles in tissues and blood, 
+            causing decompression sickness or "the bends."
+        </p>
+        
+        <h2>Le Chatelier's Principle</h2>
+        <p>
+            Le Chatelier's principle states that when a system at equilibrium is subjected to a change, 
+            the system will shift to counteract that change.
+        </p>
+        <p>
+            In diving, the equilibrium is between nitrogen in solution and nitrogen as a gas:
+        </p>
+        <p class="formula">N₂(dissolved) ⇌ N₂(gas)</p>
+        <p>
+            When ascending (decreasing pressure), the equilibrium shifts toward the gaseous state, 
+            potentially forming bubbles if the pressure change is too rapid.
+        </p>
+        
+        <h2>Why Ascent Rate Matters</h2>
+        <p>
+            The percentage change in pressure becomes larger as you get closer to the surface:
+        </p>
+        <ul>
+            <li>Going from 120ft (4.5 atm) to 60ft (2.8 atm) is a 38% decrease in pressure</li>
+            <li>Going from 60ft (2.8 atm) to 30ft (1.9 atm) is a 32% decrease in pressure</li>
+            <li>Going from 30ft (1.9 atm) to 0ft (1 atm) is a 47% decrease in pressure</li>
+        </ul>
+        <p>
+            This is why divers must slow down more as they approach the surface - the rate of gas 
+            coming out of solution increases dramatically even with smaller changes in depth.
+        </p>
+        
+        <a href="index.html" class="back-button">Return to Game</a>
+    </div>
+</body>
+</html>
