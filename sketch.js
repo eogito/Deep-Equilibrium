@@ -4,6 +4,9 @@ let playerX;
 let playerY;
 let sliderY;
 let speed;
+let nitrogenLevel = 0;
+let maxNitrogenLevel = 100;
+let dangerThreshold = 80;
 
 let introMode = true;
 let sixtyFootPauseTriggered = false;
@@ -88,6 +91,58 @@ function draw() {
     }
   }
   speed = xSlider.value()/20;
+
+  if (speed > 0) {
+    nitrogenLevel += speed * 0.2; 
+  } else {
+    nitrogenLevel = max(0, nitrogenLevel - 0.3);
+  }
+  
+  nitrogenLevel = constrain(nitrogenLevel, 0, maxNitrogenLevel);
+  
+  // Draw nitrogen meter
+  let meterHeight = 300;
+  let meterWidth = 30;
+  let meterX = width - 60;
+  let meterY = height/2 - meterHeight/2;
+  
+  // Draw meter background
+  fill(50);
+  rect(meterX, meterY, meterWidth, meterHeight, 10);
+  
+  let fillHeight = map(nitrogenLevel, 0, maxNitrogenLevel, 0, meterHeight);
+  let fillColor;
+  
+  if (nitrogenLevel < dangerThreshold * 0.5) {
+    // Safe level - green
+    fillColor = color(0, 255, 0);
+  } else if (nitrogenLevel < dangerThreshold) {
+    // Warning level - yellow
+    fillColor = color(255, 255, 0);
+  } else {
+    // Danger level - red
+    fillColor = color(255, 0, 0);
+  }
+  
+  fill(fillColor);
+  rect(meterX, meterY + meterHeight - fillHeight, meterWidth, fillHeight, 10);
+  
+  fill(255);
+  textSize(16);
+  textAlign(CENTER, CENTER);
+  text("N₂", meterX + meterWidth/2, meterY - 20);
+  
+  if (nitrogenLevel >= dangerThreshold && !introMode) {
+    fill(255, 0, 0);
+    textSize(24);
+    textAlign(CENTER, CENTER);
+    text("WARNING: Nitrogen level too high!\nRisk of decompression sickness!", width/2, 100);
+    
+    if (nitrogenLevel > dangerThreshold + 10) {
+      fill(255, 0, 0, map(nitrogenLevel, dangerThreshold, maxNitrogenLevel, 0, 100));
+      rect(0, 0, width, height);
+    }
+  }
   console.log("amongus")
   if (sliderY <= 3*height-170 && !sixtyFootPauseTriggered) {
     // Trigger another pause and text boxes
