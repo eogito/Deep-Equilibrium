@@ -20,21 +20,20 @@ let textBoxIndex = 0;
 
 nitrogenLevel = 0;
 let textBoxes = [
-  "Wow, it seems I went too far down. I need to get back up!",
-  "Right now, at a depth of 120 ft or 36.576 meters, the water exerts around 3.5 atm of pressure on me!",
-  "This is because pressure P = ρgh, where ρ is the density of water, g is the acceleration due to gravity, and h is the depth.",
-  "In this case, ρ = 1000 kg/m^3, g = 9.81 m/s^2, and h = 36.576 m.",
-  "So P = 1000 * 9.81 * 36.576 = 358,810 Pa, or about 3.5 atm.",
-  "Adding the 1 atm of pressure from the atmosphere at sea level (h=0), I am under a total of 4.5 atm of pressure!",
-  "Wow! That's a lot of pressure!",
-  "Use the slider on the left to control my ascent speed!",
-  "Be careful though, if I go up too fast, I might get the bends!",
-  "The bends, or decompression sickness, is caused by the formation of nitrogen bubbles in the blood and tissues!",
-  "Ouch!",
-  "Lets start at 60 ft/min until I reach 60 ft.",
-  "Beware of my nitrogen levels. Make sure it doesn't go too high!", 
-  "If I go up too fast, the nitrogen in my blood will come out of solution and form bubbles, but if I go too slow, my body, which isn't immediately in equilibrium with the surrounding environment, will have more time to absorb nitrogen!"
-  // Add more text boxes as needed
+  ["Wow, it seems I went too far down. I need to get back up!"],
+  ["Right now, at a depth of 120 ft or 36.576 meters, the water exerts around 3.5 atm of pressure on me!"],
+  ["This is because pressure P = ρgh, where ρ is the density of water, g is the acceleration due to gravity, and h is the depth."],
+  ["In this case, ρ = 1000 kg/m^3, g = 9.81 m/s^2, and h = 36.576 m."],
+  ["So P = 1000 * 9.81 * 36.576 = 358,810 Pa, or about 3.5 atm."],
+  ["Adding the 1 atm of pressure from the atmosphere at sea level (h=0), I am under a total of 4.5 atm of pressure!"],
+  ["Wow! That's a lot of pressure!"],
+  ["Use the slider on the left to control my ascent speed!"],
+  ["Be careful though, if I go up too fast, I might get the bends!"],
+  ["The bends, or decompression sickness, is caused by the formation of nitrogen bubbles in the blood and tissues!"],
+  ["Ouch!"],
+  ["Lets start at 60 ft/min until I reach 60 ft."],
+  ["Beware of my nitrogen levels. Make sure it doesn't go too high!"], 
+  [["If I go up too fast, the nitrogen in my blood will come out of solution and form bubbles, but if I go too slow, my body, which isn't"], [" immediately in equilibrium with the surrounding environment, will have more time to absorb nitrogen!"]]
 ];
 
 function preload() {
@@ -166,24 +165,24 @@ function draw() {
     introMode = true;
     textBoxIndex = 0;
     textBoxes = [
-      "I've reached 60ft!",
-      "I'm just going to take a safety stop here for 1 minute to let my nitrogen levels lower.", 
-      "Here, at 60 ft, or 18.3 meters, I am at around 2.8 atm of pressure!",
-      "I should probably explain why I'm so worried about getting the bends.",
-      "In short, the oxygen in my air tank is the same as good old regular air, 21% oxygen and 79% nitrogen.", 
-      "However, as I descended, the total pressure increased.", 
-      "The total pressure is the sum of partial pressures, and since the air is 79% nitrogen, the partial pressure of nitrogen in my blood at sea level (1 atm) is 0.79 atm.",
-      "However, here, at 2.8 atm, the air is still 79% nitrogen, so the partial pressure of nitrogen is 2.8 * 0.79 = 2.21 atm!",
-      "From the ideal gas law, PV = nRT, we can see that n/V = P/(RT).",  
-      "Since the volume of my body stays the same, and assuming the temperature stays constant, the concentration of dissolved nitrogen in my blood almost tripled!",
-      "However, as I ascend, the pressure decreases, and the nitrogen will come out of my blood as well.",
-      "If too much comes out too quickly, bubbles can form!",  
-      "This can be attributed to Le Chatelier's principle, which states that a system at equilibrium will shift to counteract any stresses applied.", 
-      "In this case, the system is a solubility equilibrium (the amount of nitrogen dissolved in my blood compared to the amount as a gas), and the stress is the decrease in pressure as I ascend.",
-      "In short, the equilibrium is N2(aq) <-> N2(g), and the decrease in pressure causes the equilibrium to shift to the left towards the side with more moles of gas to increase the pressure, causing nitrogen to come out of solution and form bubbles.", 
-      "Not fun!",
-      "Alright, my safety stop is over!", 
-      "Let's slow down and go at 30 ft/min until I reach 30 ft."
+      ["I've reached 60ft!"],
+      ["I'm just going to take a safety stop here for 1 minute to let my nitrogen levels lower."], 
+      ["Here, at 60 ft, or 18.3 meters, I am at around 2.8 atm of pressure!"],
+      ["I should probably explain why I'm so worried about getting the bends."],
+      ["In short, the oxygen in my air tank is the same as good old regular air, 21% oxygen and 79% nitrogen."], 
+      ["However, as I descended, the total pressure increased."], 
+      [Z["The total pressure is the sum of partial pressures, and since the air is 79% nitrogen, the partial pressure of nitrogen in my blood"], [" at sea level (1 atm) is 0.79 atm."]],
+      ["However, here, at 2.8 atm, the air is still 79% nitrogen, so the partial pressure of nitrogen is 2.8 * 0.79 = 2.21 atm!"],
+      ["From the ideal gas law, PV = nRT, we can see that n/V = P/(RT)."], 
+      [["Since the volume of my body stays the same, and assuming the temperature stays constant, the concentration of dissolved nitrogen in"], [" my blood almost tripled!"]],
+      ["However, as I ascend, the pressure decreases, and the nitrogen will come out of my blood as well."],
+      ["If too much comes out too quickly, bubbles can form!"], 
+      ["This can be attributed to Le Chatelier's principle, which states that a system at equilibrium will shift to counteract any stresses applied."], 
+      [["In this case, the system is a solubility equilibrium (the amount of nitrogen dissolved in my blood compared to the amount as a gas),"], [" and the stress is the decrease in pressure as I ascend."]],
+      [["In short, the equilibrium is N2(aq) <-> N2(g), and the decrease in pressure causes the equilibrium to shift to the left towards the"], [" side with more moles of gas to increase the pressure, causing nitrogen to come out of solution and form bubbles."]], 
+      ["Not fun!"],
+      ["Alright, my safety stop is over!"], 
+      ["Let's slow down and go at 30 ft/min until I reach 30 ft."]
     ];
     sixtyFootPauseTriggered = true;
   }
@@ -194,21 +193,21 @@ function draw() {
     introMode = true;
     textBoxIndex = 0;
     textBoxes = [
-      "I've reached 30ft!",
-      "I'm going to take another safety stop here for a minute",
-      "Here, at 30 ft, or 9 meters, I am at around 1.9 atm of pressure!",
-      "You might be wondering why I am slowing down as I go up.", 
-      "This can be explained neatly through Henry's Law, which states that S = kP, where S is the solubility of a gas in a liquid, k is a constant, and P is the partial pressure of the gas!", 
-      "Essentially, as I ascend, the total pressure I am under (and subsequently the partial pressure of nitrogen, since the total pressure is the sum of partial pressures) decreases.",
-      "This then decreases the solubility of nitrogen in my blood, causing dissolved nitrogen to come out and form bubbles in my tissues.",
-      "Since S = kP, the solubility of nitrogen in my blood is directly proportional to the partial pressure of nitrogen.",
-      "This means that as I ascended from 120 ft (4.5 atm) to 60 ft (2.8 atm), the partial pressure and the solubility of nitrogen in my blood decreased by 38%.",
-      "Then, as I ascended from 60 ft (2.8 atm) to 30 ft (1.9 atm), the partial pressure and solubility of nitrogen in my blood decreased by 32%.", 
-      "That means that around the same amount of nitrogen in my blood was released during both of these ascents, despite the first being 60 ft and the second being 30 ft!",
-      "Proportionally, the amount of nitrogen dissolving out of my blood compared to the amount of distance I ascend is only going to go up from here as we get closer to the surface!", 
-      "That is why I need to slow down even more as I ascend!",
-      "My stop here seems to be over, so I can go up again!", 
-      "Let's slow down and go at 15 ft/min until I reach 15 ft."
+      ["I've reached 30ft!"],
+      ["I'm going to take another safety stop here for a minute"],
+      ["Here, at 30 ft, or 9 meters, I am at around 1.9 atm of pressure!"],
+      ["You might be wondering why I am slowing down as I go up."], 
+      ["This can be explained neatly through Henry's Law, which states that S = kP, where S is the solubility of a gas in a liquid, k is a constant,"], [" and P is the partial pressure of the gas!"], 
+      ["Essentially, as I ascend, the total pressure I am under (and subsequently the partial pressure of nitrogen, since the total pressure is the"], [" sum of partial pressures) decreases."],
+      ["This then decreases the solubility of nitrogen in my blood, causing dissolved nitrogen to come out and form bubbles in my tissues."],
+      ["Since S = kP, the solubility of nitrogen in my blood is directly proportional to the partial pressure of nitrogen."],
+      ["This means that as I ascended from 120 ft (4.5 atm) to 60 ft (2.8 atm), the partial pressure and the solubility of nitrogen in my blood decreased by 38%."],
+      ["Then, as I ascended from 60 ft (2.8 atm) to 30 ft (1.9 atm), the partial pressure and solubility of nitrogen in my blood decreased by 32%."], 
+      ["That means that around the same amount of nitrogen in my blood was released during both of these ascents, despite the first being 60 ft and the second being 30 ft!"],
+      ["Proportionally, the amount of nitrogen dissolving out of my blood compared to the amount of distance I ascend is only going to go up from here as we get closer to the surface!"], 
+      ["That is why I need to slow down even more as I ascend!"],
+      ["My stop here seems to be over, so I can go up again!"], 
+      ["Let's slow down and go at 15 ft/min until I reach 15 ft."]
     ];
     thirtyFootPauseTriggered = true;
   }
@@ -219,13 +218,14 @@ function draw() {
     introMode = true;
     textBoxIndex = 0;
     textBoxes = [
-      "I've reached 15 ft!",
-      "I'm going to take another safety stop here for 3 minutes, just to really make sure my nitrogen levels are low enough.",
-      "Here, at 15 ft, or 4.6 meters, I am at around 1.4 atm of pressure!",
-      "You might be wondering why I'm so worried about nitrogen bubbling out, even though there's oxygen in my blood too!",
-      "This is because unlike nitrogen, oxygen is constantly being used up by my body for cellular respiration.",
-      "As a result, it doesn't accumulate in my tissues like nitrogen does.", 
-      "Alright, seems like my stop is over, lets go up at 3 ft/min until I reach the surface!",
+      ["I've reached 15 ft!"],
+      ["I'm going to take another safety stop here for 3 minutes, just to really make sure my nitrogen levels are low enough."],
+      ["This stop very important, and is mandatory if you dive below 32 ft."],
+      ["Here, at 15 ft, or 4.6 meters, I am at around 1.4 atm of pressure!"],
+      ["You might be wondering why I'm so worried about nitrogen bubbling out, even though there's oxygen in my blood too!"],
+      ["This is because unlike nitrogen, oxygen is constantly being used up by my body for cellular respiration."],
+      ["As a result, it doesn't accumulate in my tissues like nitrogen does."], 
+      ["Alright, seems like my stop is over, lets go up at 3 ft/min until I reach the surface!"],
     ];
     fifteenFootPauseTriggered = true;
   }
@@ -237,7 +237,11 @@ function draw() {
     fill(255);
     textSize(24);
     textAlign(CENTER, CENTER);
-    text(textBoxes[textBoxIndex], width / 2, height - 100);
+    let y = height - 100;
+    for (let i = 0; i < textBoxes[textBoxIndex].length; i++) {
+      text(textBoxes[textBoxIndex][i], width / 2, y);
+      y += 30; // Add some space between lines
+    }
   } else {
     xSlider.elt.disabled = false;
     if (keyIsDown(65)) playerX -= 10; // Move left by 10 pixels
@@ -277,7 +281,6 @@ function draw() {
   fill(0);
   textSize(16);
   text("speed (ft/min): " + xSlider.value(), 160, 300);
-  text("sliderY: " + sliderY, 160, 330);
   if (nitrogenLevel >= maxNitrogenLevel) {
     gameOver = true;
   }
@@ -358,16 +361,16 @@ function mousePressed() {
       
       // Reset to original text boxes
       textBoxes = [
-        "Wow, it seems I went too far down. I need to get back up!",
-        "Right now, at a depth of 120 ft or 36.576 meters, the water exerts around 3.5 atm of pressure on me!",
-        "This is because pressure P = ρgh, where ρ is the density of water, g is the acceleration due to gravity, and h is the depth.",
-        "In this case, ρ = 1000 kg/m^3, g = 9.81 m/s^2, and h = 36.576 m.",
-        "So P = 1000 * 9.81 * 36.576 = 358,810 Pa, or about 3.5 atm.",
-        "Adding the 1 atm of pressure from the atmosphere at sea level (h=0), I am under a total of 4.5 atm of pressure!",
-        "Use the slider on the left to control my ascent speed!",
-        "Be careful though, if I go up too fast, I might get the bends!",
-        "Lets start at 60 ft/min until I reach 60 ft.",
-        "Beware of my nitrogen levels. Make sure it doesn't go too high!"
+        ["Wow, it seems I went too far down. I need to get back up!"],
+        ["Right now, at a depth of 120 ft or 36.576 meters, the water exerts around 3.5 atm of pressure on me!"],
+        ["This is because pressure P = ρgh, where ρ is the density of water, g is the acceleration due to gravity, and h is the depth."],
+        ["In this case, ρ = 1000 kg/m^3, g = 9.81 m/s^2, and h = 36.576 m."],
+        ["So P = 1000 * 9.81 * 36.576 = 358,810 Pa, or about 3.5 atm."],
+        ["Adding the 1 atm of pressure from the atmosphere at sea level (h=0), I am under a total of 4.5 atm of pressure!"],
+        ["Use the slider on the left to control my ascent speed!"],
+        ["Be careful though, if I go up too fast, I might get the bends!"],
+        ["Lets start at 60 ft/min until I reach 60 ft."],
+        ["Beware of my nitrogen levels. Make sure it doesn't go too high!"]
       ];
     }
     return;
