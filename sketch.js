@@ -366,11 +366,11 @@ function mouseClicked() {
         ["This is because pressure P = ρgh, where ρ is the density of water, g is the acceleration due to gravity, and h is the depth."],
         ["In this case, ρ = 1000 kg/m^3, g = 9.81 m/s^2, and h = 36.576 m."],
         ["So P = 1000 * 9.81 * 36.576 = 358,810 Pa, or about 3.5 atm."],
-        ["Adding the 1 atm of pressure from the atmosphere at sea level (h=0), I am under a total of 4.5 atm of pressure!"],
+        ["Adding the 1 atm of pressure from the atmosphere at sea level (h = 0), I am under a total of 4.5 atm of pressure!"],
         ["Use the slider on the left to control my ascent speed!"],
         ["Be careful though, if I go up too fast, I might get the bends!"],
         ["Lets start at 60 ft/min until I reach 60 ft."],
-        ["Beware of my nitrogen levels. Make sure it doesn't go too high!"]
+        ["Beware of my nitrogen levels. Make sure they don't go too high!"]
       ];
     }
     return;
