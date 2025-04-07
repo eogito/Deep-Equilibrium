@@ -198,15 +198,16 @@ function draw() {
       ["Here, at 30 ft, or 9 meters, I am at around 1.9 atm of pressure!"],
       ["You might be wondering why I am slowing down as I go up."], 
       ["This can be explained neatly through Henry's Law, which states that S = kP, where S is the solubility of a gas in a liquid, k is a constant,"], [" and P is the partial pressure of the gas!"], 
+      ["In short, the solubility of a gas in a liquid is directly proportional to the partial pressure of the gas."], 
       ["Essentially, as I ascend, the total pressure I am under (and subsequently the partial pressure of nitrogen, since the total pressure is the"], [" sum of partial pressures) decreases."],
       ["This then decreases the solubility of nitrogen in my blood, causing dissolved nitrogen to come out and form bubbles in my tissues."],
-      ["Since S = kP, the solubility of nitrogen in my blood is directly proportional to the partial pressure of nitrogen."],
-      ["This means that as I ascended from 120 ft (4.5 atm) to 60 ft (2.8 atm), the partial pressure and the solubility of nitrogen in my blood decreased by 38%."],
+      ["Again, since S = kP, the solubility of nitrogen in my blood is directly proportional to the partial pressure of nitrogen."],
+      ["Now, as I ascended from 120 ft (4.5 atm) to 60 ft (2.8 atm), the partial pressure and subsequently, the solubility of nitrogen in my blood decreased by 38%."],
       ["Then, as I ascended from 60 ft (2.8 atm) to 30 ft (1.9 atm), the partial pressure and solubility of nitrogen in my blood decreased by 32%."], 
-      ["That means that around the same amount of nitrogen in my blood was released during both of these ascents, despite the first being 60 ft and the second being 30 ft!"],
-      ["Proportionally, the amount of nitrogen dissolving out of my blood compared to the amount of distance I ascend is only going to go up from here as we get closer to the surface!"], 
+      ["That means that the decrease in my blood's nitrogen solubility (and the percentage of nitrogen dissolving out of my blood) during both of"], [" these ascents was roughly the same, despite the first being 60 ft and the second being 30 ft!"],
+      ["Proportionally, the amount of nitrogen dissolving out of my blood compared to the amount of distance I ascend is only going to go up"], [" from here as we get closer to the surface!"], 
       ["That is why I need to slow down even more as I ascend!"],
-      ["My stop here seems to be over, so I can go up again!"], 
+      ["Alright, my safety stop here seems to be over. I can go up again!"], 
       ["Let's slow down and go at 15 ft/min until I reach 15 ft."]
     ];
     thirtyFootPauseTriggered = true;
@@ -219,13 +220,13 @@ function draw() {
     textBoxIndex = 0;
     textBoxes = [
       ["I've reached 15 ft!"],
-      ["I'm going to take another safety stop here for 3 minutes, just to really make sure my nitrogen levels are low enough."],
-      ["This stop very important, and is mandatory if you dive below 32 ft."],
       ["Here, at 15 ft, or 4.6 meters, I am at around 1.4 atm of pressure!"],
-      ["You might be wondering why I'm so worried about nitrogen bubbling out, even though there's oxygen in my blood too!"],
+      ["I'm going to take another safety stop here for 3 minutes, just to really make there's time for my blood nitrogen levels to lower"], [" to equilibrium up here, at a lower pressure."],
+      ["This 3 minute stop at 15 ft is very important, and mandatory if you dive below 32 ft!"],
+      ["You might be wondering why I'm so worried about nitrogen in particular bubbling out of my blood, even though there's oxygen in my air tanks too!"],
       ["This is because unlike nitrogen, oxygen is constantly being used up by my body for cellular respiration."],
-      ["As a result, it doesn't accumulate in my tissues like nitrogen does."], 
-      ["Alright, seems like my stop is over, lets go up at 3 ft/min until I reach the surface!"],
+      ["As a result, it doesn't accumulate in my body like nitrogen does, so I don't have to worry about it as much."], 
+      ["Alright, seems like my stop is over, lets go up even slower, at 3 ft/min until I reach the surface!"],
     ];
     fifteenFootPauseTriggered = true;
   }
