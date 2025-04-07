@@ -170,7 +170,7 @@ function draw() {
       ["Here, at 60 ft, or 18.3 meters, I am at around 2.8 atm of pressure!"],
       ["I should probably explain why I'm so worried about getting the bends."],
       ["In short, the oxygen in my air tank is the same as good old regular air, 21% oxygen and 79% nitrogen."], 
-      ["However, the deep down, the total pressure is very high."], 
+      ["However, this deep down, the total pressure is very high."], 
       [["The total pressure is the sum of partial pressures, and since the air is 79% nitrogen, the partial pressure of nitrogen in my blood"], [" at sea level (1 atm) is 0.79 atm."]],
       ["However, here, at 2.8 atm, the air in my tank is still 79% nitrogen, so the partial pressure of nitrogen is 2.8 * 0.79 = 2.21 atm!"],
       ["From the ideal gas law, PV = nRT, we can see that n/V = P/(RT)."], 
