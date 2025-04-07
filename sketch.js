@@ -29,11 +29,11 @@ let textBoxes = [
   ["Wow! That's a lot of pressure!"],
   ["Use the slider on the left to control my ascent speed!"],
   ["Be careful though, if I go up too fast, I might get the bends!"],
-  ["The bends, or decompression sickness, is caused by the formation of nitrogen bubbles in the blood and tissues!"],
+  ["The bends, or decompression sickness, is caused by the formation of nitrogen bubbles in my blood and tissues!"],
   ["Ouch!"],
-  ["Lets start at 60 ft/min until I reach 60 ft."],
-  ["Beware of my nitrogen levels. Make sure it doesn't go too high!"], 
-  [["If I go up too fast, the nitrogen in my blood will come out of solution and form bubbles, but if I go too slow, my body, which isn't"], [" immediately in equilibrium with the surrounding environment, will have more time to absorb nitrogen!"]]
+  ["On my way up, beware of my nitrogen levels. Make sure they don't go too high!"], 
+  [["If I go up too fast, the nitrogen in my blood will come out of solution and form bubbles, but if I go too slow, my body, which isn't"], [" immediately in equilibrium with the surrounding environment, will have more time to absorb nitrogen!"]],
+  ["There's a healthy medium to this! Lets start at 60 ft/min until I reach 60 ft."]
 ];
 
 function preload() {
@@ -171,8 +171,8 @@ function draw() {
       ["I should probably explain why I'm so worried about getting the bends."],
       ["In short, the oxygen in my air tank is the same as good old regular air, 21% oxygen and 79% nitrogen."], 
       ["However, as I descended, the total pressure increased."], 
-      [Z["The total pressure is the sum of partial pressures, and since the air is 79% nitrogen, the partial pressure of nitrogen in my blood"], [" at sea level (1 atm) is 0.79 atm."]],
-      ["However, here, at 2.8 atm, the air is still 79% nitrogen, so the partial pressure of nitrogen is 2.8 * 0.79 = 2.21 atm!"],
+      [["The total pressure is the sum of partial pressures, and since the air is 79% nitrogen, the partial pressure of nitrogen in my blood"], [" at sea level (1 atm) is 0.79 atm."]],
+      ["However, here, at 2.8 atm, the air in my tank is still 79% nitrogen, so the partial pressure of nitrogen is 2.8 * 0.79 = 2.21 atm!"],
       ["From the ideal gas law, PV = nRT, we can see that n/V = P/(RT)."], 
       [["Since the volume of my body stays the same, and assuming the temperature stays constant, the concentration of dissolved nitrogen in"], [" my blood almost tripled!"]],
       ["However, as I ascend, the pressure decreases, and the nitrogen will come out of my blood as well."],
@@ -362,15 +362,19 @@ function mouseClicked() {
       // Reset to original text boxes
       textBoxes = [
         ["Wow, it seems I went too far down. I need to get back up!"],
-        ["Right now, at a depth of 120 ft or 36.576 meters, the water exerts around 3.5 atm of pressure on me!"],
-        ["This is because pressure P = ρgh, where ρ is the density of water, g is the acceleration due to gravity, and h is the depth."],
-        ["In this case, ρ = 1000 kg/m^3, g = 9.81 m/s^2, and h = 36.576 m."],
-        ["So P = 1000 * 9.81 * 36.576 = 358,810 Pa, or about 3.5 atm."],
-        ["Adding the 1 atm of pressure from the atmosphere at sea level (h = 0), I am under a total of 4.5 atm of pressure!"],
-        ["Use the slider on the left to control my ascent speed!"],
-        ["Be careful though, if I go up too fast, I might get the bends!"],
-        ["Lets start at 60 ft/min until I reach 60 ft."],
-        ["Beware of my nitrogen levels. Make sure they don't go too high!"]
+      ["Right now, at a depth of 120 ft or 36.576 meters, the water exerts around 3.5 atm of pressure on me!"],
+      ["This is because pressure P = ρgh, where ρ is the density of water, g is the acceleration due to gravity, and h is the depth."],
+      ["In this case, ρ = 1000 kg/m^3, g = 9.81 m/s^2, and h = 36.576 m."],
+      ["So P = 1000 * 9.81 * 36.576 = 358,810 Pa, or about 3.5 atm."],
+      ["Adding the 1 atm of pressure from the atmosphere at sea level (h=0), I am under a total of 4.5 atm of pressure!"],
+      ["Wow! That's a lot of pressure!"],
+      ["Use the slider on the left to control my ascent speed!"],
+      ["Be careful though, if I go up too fast, I might get the bends!"],
+      ["The bends, or decompression sickness, is caused by the formation of nitrogen bubbles in my blood and tissues!"],
+      ["Ouch!"],
+      ["On my way up, beware of my nitrogen levels. Make sure they don't go too high!"], 
+      [["If I go up too fast, the nitrogen in my blood will come out of solution and form bubbles, but if I go too slow, my body, which isn't"], [" immediately in equilibrium with the surrounding environment, will have more time to absorb nitrogen!"]],
+      ["There's a healthy medium to this! Lets start at 60 ft/min until I reach 60 ft."]
       ];
     }
     return;
