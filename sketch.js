@@ -174,7 +174,7 @@ function draw() {
       [["The total pressure is the sum of partial pressures, and since the air is 79% nitrogen, the partial pressure of nitrogen in my blood"], [" at sea level (1 atm) is 0.79 atm."]],
       ["However, here, at 2.8 atm, the air in my tank is still 79% nitrogen, so the partial pressure of nitrogen is 2.8 * 0.79 = 2.21 atm!"],
       ["From the ideal gas law, PV = nRT, we can see that n/V = P/(RT)."], 
-      [["Since the volume of my body stays the same, and assuming the temperature stays constant, we can see thatthe concentration of dissolved"], [" nitrogen in my blood almost tripled!"]],
+      [["Since the volume of my body stays the same, and assuming the temperature stays constant, we can see that the concentration of dissolved"], [" nitrogen in my blood almost tripled!"]],
       ["However, as I ascend, the pressure will decrease, and the nitrogen will come out of my blood as well."],
       ["If too much comes out too quickly, bubbles can form in my body!"], 
       ["This can be attributed to Le Chatelier's principle, which states that a system at equilibrium will shift to counteract any stresses applied."], 
