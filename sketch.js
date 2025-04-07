@@ -178,7 +178,7 @@ function draw() {
       ["However, as I ascend, the pressure will decrease, and the nitrogen will come out of my blood as well."],
       ["If too much comes out too quickly, bubbles can form in my body!"], 
       ["This can be attributed to Le Chatelier's principle, which states that a system at equilibrium will shift to counteract any stresses applied."], 
-      [["In this case, the system is a solubility equilibrium (the amount of nitrogen dissolved in my blood compared to the amount as a gas),"], [" and the stress is the decrease in pressure as I ascend."]],
+      [["In this case, the system is the amount of nitrogen dissolved in my blood compared to the amount as a gas,"], [" and the stress is the decrease in pressure as I ascend."]],
       [["In short, the equilibrium is N2(aq) <-> N2(g), and the decrease in pressure causes the equilibrium to shift to the left towards the"], [" side with more moles of gas to increase the pressure, causing nitrogen to come out of solution (my blood) and form bubbles."]], 
       ["Not fun!"],
       ["Alright, looks like my my safety stop is over!"], 
