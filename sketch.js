@@ -199,7 +199,7 @@ function draw() {
       ["You might be wondering why I am slowing down as I go up."], 
       [["This can be explained neatly through Henry's Law, which states that S = kP, where S is the solubility of a gas in a liquid, k is a constant,"], [" and P is the partial pressure of the gas!"]], 
       ["In short, the solubility of a gas in a liquid is directly proportional to the partial pressure of the gas."], 
-      ["Essentially, as I ascend, the total pressure I am under (and subsequently the partial pressure of nitrogen, since the total pressure is the"], [" sum of partial pressures) decreases."],
+      [["Essentially, as I ascend, the total pressure I am under (and subsequently the partial pressure of nitrogen, since the total pressure is the"], [" sum of partial pressures) decreases."]],
       ["This then decreases the solubility of nitrogen in my blood, causing dissolved nitrogen to come out and form bubbles in my tissues."],
       ["Again, since S = kP, the solubility of nitrogen in my blood is directly proportional to the partial pressure of nitrogen."],
       ["Now, as I ascended from 120 ft (4.5 atm) to 60 ft (2.8 atm), the partial pressure and subsequently, the solubility of nitrogen in my blood decreased by 38%."],
