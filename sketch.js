@@ -330,7 +330,7 @@ function draw() {
   }
 }
 
-function mousePressed() {
+function mouseClicked() {
   if (introMode) {
     textBoxIndex++;
     if (textBoxIndex >= textBoxes.length) {
@@ -374,12 +374,5 @@ function mousePressed() {
       ];
     }
     return;
-  }
-  
-  if (introMode) {
-    textBoxIndex++;
-    if (textBoxIndex >= textBoxes.length) {
-      introMode = false;
-    }
   }
 }
